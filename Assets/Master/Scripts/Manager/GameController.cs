@@ -1,13 +1,14 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private Vector2 doorLockPosition;
+    [SerializeField] private Transform environmentParent;
 
     [SerializeField] private Transform player;
-    [SerializeField] private Boss boss;
     [SerializeField] private Transform bossRoom, bossRoomDoor;
     [SerializeField] private CinemachineCamera cc;
     [SerializeField] private CinemachinePositionComposer composer;
@@ -15,9 +16,9 @@ public class GameController : MonoBehaviour
 
     private Vector2 bossPosition, playerStartPos, doorOpenPosition;
     public static GameController Instance { get; private set; }
-    public Transform Player => player;
-
-    [SerializeField] private GameObject[] levels;
+    public Transform EnvironmentParent => environmentParent;
+    public Boss boss { get; set; }
+    public List<GameObject> levels { get; set; } = new();
 
     private void Awake()
     {
@@ -38,20 +39,17 @@ public class GameController : MonoBehaviour
         EventCallback.OnGameStart -= GameStart;
     }
 
-    private void Start()
-    {
-        LoadLevel(0, true);
-
-        boss.enabled = false;
-        doorOpenPosition = bossRoomDoor.position;
-        bossPosition = boss.transform.position;
-    }
-
     private void GameStart(Transform player)
     {
         this.player = player;
         cc.Follow = player;
         playerStartPos = player.position;
+        
+        LoadLevel(0, true);
+
+        boss.enabled = false;
+        doorOpenPosition = bossRoomDoor.position;
+        bossPosition = boss.transform.position;
     }
 
     private void BossSpawn()
