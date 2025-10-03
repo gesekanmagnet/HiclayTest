@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfc388ba5631e7f4ca6cb5963dddc97e
+    m_Address: Assets/Master/Audio/Retro Sounds 32-Bit - Update 1/shoot2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1f928ac460ac65742b3ac00311578566, type: 2}
   m_SchemaSet:

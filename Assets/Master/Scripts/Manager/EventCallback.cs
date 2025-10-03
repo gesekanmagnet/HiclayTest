@@ -10,7 +10,7 @@ public static class EventCallback
     public static Action<int> OnBossHealth { get; set; } = delegate { };
     public static Action OnBossSpawn { get; set; } = delegate { };
 
-    public static Action<bool> OnUpdate { get; set; } = delegate { };
+    public static Action<bool> OnDemandUpdate { get; set; } = delegate { };
     public static Action<long, float> OnUpdateProgress { get; set; } = delegate { };
 }
 

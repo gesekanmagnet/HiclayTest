@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    [SerializeField] private int bulletLayer = 7;
-    [SerializeField] private float fireRate = 2f, bulletSpeed = 15f;
-    [SerializeField] private Color bulletColor;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] protected int bulletLayer = 7;
+    [SerializeField] protected float fireRate = 2f, bulletSpeed = 15f;
+    [SerializeField] protected Color bulletColor;
+    [SerializeField] protected AudioClip clip;
 
-    private float timeInterval;
+    protected float timeInterval;
 
-    public void Shoot(Vector2 direction)
+    public virtual void Shoot(Vector2 direction)
     {
         if(Time.time >= timeInterval)
         {

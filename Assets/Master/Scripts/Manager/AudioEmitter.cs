@@ -15,7 +15,7 @@ public class AudioEmitter : MonoBehaviour
     }
 
     /// <summary>
-    /// Play one shot clip, use this for SFX
+    /// Play one shot combatClip, use this for SFX
     /// </summary>
     /// <param name="clip"></param>
     public static void PlayOneShot(AudioClip clip)

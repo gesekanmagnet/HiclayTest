@@ -4,10 +4,11 @@ using UnityEngine;
 public class UpdateInterface : MonoBehaviour
 {
     [SerializeField] private TMP_Text updateText;
+    [SerializeField] private GameObject updateButton;
 
     private void OnEnable()
     {
-        EventCallback.OnUpdate += Active;
+        EventCallback.OnDemandUpdate += Active;
         EventCallback.OnUpdateProgress += ShowProgress;
     }
 
@@ -15,6 +16,7 @@ public class UpdateInterface : MonoBehaviour
     {
         updateText.SetText("Check update");
         updateText.gameObject.SetActive(enable);
+        updateButton.SetActive(enable);
     }
 
     private void ShowProgress(long size, float progress)

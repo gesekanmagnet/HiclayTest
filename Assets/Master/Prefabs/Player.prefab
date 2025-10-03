@@ -338,7 +338,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.98154783, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -397,8 +397,8 @@ GameObject:
   - component: {fileID: 8283966862774180328}
   - component: {fileID: 6226033952272376202}
   - component: {fileID: 4825808949825956421}
-  - component: {fileID: 2074581464268078587}
   - component: {fileID: 2633554472321651136}
+  - component: {fileID: 3791159463691630632}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -534,23 +534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
---- !u!114 &2074581464268078587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3489674484584731407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb1a2a7d0b75324abc5c3d773c2f437, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletLayer: 7
-  fireRate: 6
-  bulletSpeed: 35
-  bulletColor: {r: 1, g: 1, b: 1, a: 1}
-  clip: {fileID: 8300000, guid: 41c21726ac8fdaa4cad61973a4067028, type: 3}
 --- !u!58 &2633554472321651136
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -587,6 +570,23 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.7
+--- !u!114 &3791159463691630632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489674484584731407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4941dbc7662c441ac34f5b1b9522a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLayer: 7
+  fireRate: 6
+  bulletSpeed: 35
+  bulletColor: {r: 1, g: 1, b: 1, a: 1}
+  clip: {fileID: 0}
 --- !u!1 &3629347876135160460
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 0.9898695, g: 1, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -989,7 +989,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.98154783, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
