@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Level
+  m_Name: Gameplay
   m_EditorClassIdentifier: 
-  m_GroupName: Level
-  m_GUID: 54fee0b2800606544aff49d0d2785891
+  m_GroupName: Gameplay
+  m_GUID: facdd0b2c1cb5c748b588a4b1f6e90fe
   m_SerializeEntries:
   - m_GUID: 0136fa4609484a1459702a4311ad14f4
     m_Address: Assets/Master/Prefabs/Sub/Sub 2.prefab
@@ -25,8 +25,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61c6e0274b43a9940b8db547e6e5624e
+    m_Address: Assets/Master/Prefabs/Bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 61cbe9741be350f4e93e4ebe6b2fe1e1
     m_Address: Assets/Master/Prefabs/Sub/Sub 3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62a4e3757cecc35428c363e4d43004e8
+    m_Address: Assets/Master/Prefabs/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4ecf53e40f86d34cb28e55432a27d71
+    m_Address: Assets/Master/Prefabs/Boss.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -34,5 +49,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 1f928ac460ac65742b3ac00311578566, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3c913455a9cbf804582ddd12f2304f42, type: 2}
-    - {fileID: 11400000, guid: b7aeb2f34cb9c4645bc2f9d238a8a86f, type: 2}
+    - {fileID: 11400000, guid: 4f1a20fd6cfa8694b92a3f0f1d2fabe2, type: 2}
+    - {fileID: 11400000, guid: bd8b010acd535ea4a9c2d30b740050cb, type: 2}

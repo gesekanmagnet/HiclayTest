@@ -9,6 +9,9 @@ public static class EventCallback
     public static Action<float> OnFillDash { get; set; } = delegate { };
     public static Action<int> OnBossHealth { get; set; } = delegate { };
     public static Action OnBossSpawn { get; set; } = delegate { };
+
+    public static Action<bool> OnUpdate { get; set; } = delegate { };
+    public static Action<long, float> OnUpdateProgress { get; set; } = delegate { };
 }
 
 public enum GameResult { Lose, Win }

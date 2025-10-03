@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
-  m_Name: Level_ContentUpdateGroupSchema
+  m_Name: Gameplay_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: af7864d5b1d841f449f8b40f6cc1306e, type: 2}
+  m_Group: {fileID: 11400000, guid: 766cde5a9fe79d94da4267daf4bfc8ce, type: 2}
   m_StaticContent: 0
