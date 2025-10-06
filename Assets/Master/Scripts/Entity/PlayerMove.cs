@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed = 8f, jumpForce = 15f, dashForce = 25f, dashCooldown = 2f, dashTime = .3f, rayGroundDistance = .2f;
     [SerializeField] private LayerMask jumpLayer;
     [SerializeField] private AudioClip dashClip, jumpClip, hitClip;
+    [SerializeField] private SpriteRenderer sprite;
 
     private float fallGravity = 10f;
     
@@ -30,6 +31,8 @@ public class PlayerMove : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();
         trail = GetComponentInChildren<TrailRenderer>();
+
+        sprite.sprite = AssetManager.Get<Sprite>("PlayerSprite");
     }
 
     private void OnEnable()

@@ -30,13 +30,21 @@ public class GameController : MonoBehaviour
         EventCallback.OnBossSpawn += BossSpawn;
         EventCallback.OnGameOver += Gameover;
         EventCallback.OnGameStart += GameStart;
+        EventCallback.OnUpdate += Load;
     }
 
     private void OnDisable()
     {
+        EventCallback.OnUpdate -= Load;
         EventCallback.OnBossSpawn -= BossSpawn;
         EventCallback.OnGameOver -= Gameover;
         EventCallback.OnGameStart -= GameStart;
+    }
+
+    private void Load()
+    {
+        boss = AssetManager.Get<GameObject>("Boss").GetComponent<Boss>();
+        EventCallback.OnGameStart(AssetManager.Get<GameObject>("Player").transform);
     }
 
     private void GameStart(Transform player)

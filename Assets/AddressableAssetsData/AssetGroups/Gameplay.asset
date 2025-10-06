@@ -16,39 +16,67 @@ MonoBehaviour:
   m_GUID: facdd0b2c1cb5c748b588a4b1f6e90fe
   m_SerializeEntries:
   - m_GUID: 0136fa4609484a1459702a4311ad14f4
-    m_Address: Assets/Master/Prefabs/Sub/Sub 2.prefab
+    m_Address: Sub 2
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Gameplay
+    - level
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06fe1ff039f9b5248bf41126ba09aa77
-    m_Address: Assets/Master/Prefabs/Sub/Sub 1.prefab
+    m_Address: Sub 1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Gameplay
+    - level
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b5e9e17b0275e24d8bde5838ab44c6a
+    m_Address: Assets/Master/Sprites/Screenshot_2025-10-06_160333-removebg-preview.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Gameplay
+    - PlayerSprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 61c6e0274b43a9940b8db547e6e5624e
-    m_Address: Assets/Master/Prefabs/Bullet.prefab
+    m_Address: Bullet
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Bullet
+    - Gameplay
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 61cbe9741be350f4e93e4ebe6b2fe1e1
-    m_Address: Assets/Master/Prefabs/Sub/Sub 3.prefab
+    m_Address: Sub 3
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Gameplay
+    - level
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62a4e3757cecc35428c363e4d43004e8
     m_Address: Assets/Master/Prefabs/Player.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Gameplay
+    - Player
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4ecf53e40f86d34cb28e55432a27d71
     m_Address: Assets/Master/Prefabs/Boss.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Boss
+    - Gameplay
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dafbfae38b94ce443b119722924c1f7f
+    m_Address: Assets/Master/Sprites/halo.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Gameplay
+    - HatSprite
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfc388ba5631e7f4ca6cb5963dddc97e
-    m_Address: Assets/Master/Audio/Retro Sounds 32-Bit - Update 1/shoot2.wav
+    m_Address: shoot1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Gameplay
+    - ShootClip
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1f928ac460ac65742b3ac00311578566, type: 2}

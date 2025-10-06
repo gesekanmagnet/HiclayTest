@@ -1,28 +1,21 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 public class AssetLoader : MonoBehaviour
 {
-    [SerializeField] private AssetReferenceGameObject player, boss, bullet;
-    [SerializeField] private AssetReferenceGameObject[] level;
-    [SerializeField] private AssetRef<AudioClip> combatClip;
-
-    System.Collections.Generic.List<AssetReference> allRefs = new();
-    public static AssetLoader Instance { get; private set; }
-
-    public AssetRef<AudioClip> CombatClip => combatClip;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    //[SerializeField] private AssetReferenceGameObject player, boss, bullet;
+    //[SerializeField] private AssetReferenceGameObject[] level;
+    [SerializeField] private AssetLabelReference mainLabel, bulletLabel, playerLabel, shootClipLabel, levelLabel, bossLabel, hatLabel, playerSpriteLabel;
 
     private async void Start() 
     {
-        //bool update = await AnyUpdate();
-        //if(update)
-        //    await UpdateContent();
-        
+        //await Addressables.InitializeAsync().Task;
+        //Debug.Log("Addressables initialized");
+        bool update = await AnyUpdate();
+        if (update)
+            await UpdateContent();
+
         await LoadAssets();
         await LoopUpdate();
     }
@@ -33,13 +26,7 @@ public class AssetLoader : MonoBehaviour
         {
             Debug.Log("30 detik");
             bool update = await AnyUpdate();
-            if (update)
-            {
-                Debug.Log("update");
-                EventCallback.OnDemandUpdate(true);
-            }
-            else
-                EventCallback.OnDemandUpdate(false);
+            EventCallback.OnDemandUpdate(update);
 
             await System.Threading.Tasks.Task.Delay(30000);
         }
@@ -56,28 +43,55 @@ public class AssetLoader : MonoBehaviour
     {
         GameController.Instance.levels.Clear();
 
-        foreach (var item in level)
+        var handle = Addressables.LoadResourceLocationsAsync(levelLabel);
+        await handle.Task;
+        Debug.Log($"Found {handle.Result.Count} locations for label Level");
+        var sorted = handle.Result.OrderBy(loc => loc.PrimaryKey).ToList();
+
+        foreach (var item in sorted)
         {
-            var result = await item.InstantiateAsync(GameController.Instance.EnvironmentParent).Task;
-            AssetManager.AddHandle(result);
-            GameController.Instance.levels.Add(result);
+            Debug.Log("Before load");
+            var level = await Addressables.InstantiateAsync(item, GameController.Instance.EnvironmentParent).Task;
+            Debug.Log("After load");
+            AssetManager.AddHandle(levelLabel.labelString, level, level);
+            GameController.Instance.levels.Add(level);
+            //Debug.Log(item.PrimaryKey);
         }
 
-        //var combatClip = this.combatClip.assetReference.LoadAssetAsync<AudioClip>();
-        //AssetManager.AddHandle(combatClip);
-        //this.combatClip.Value = await combatClip.Task;
+        await Load<AudioClip>(shootClipLabel);
+        await Load<Sprite>(hatLabel);
+        await Load<Sprite>(playerSpriteLabel);
+        await Load<GameObject>(bulletLabel);
+        await LoadGameObject(bossLabel);
+        //var boss = await Addressables.InstantiateAsync("Boss", instantiateInWorldSpace: true).Task;
+        //AssetManager.AddHandle("Boss", boss, boss);
+        //GameController.Instance.boss = boss.GetComponent<Boss>();
 
-        var bullet = await this.bullet.InstantiateAsync(instantiateInWorldSpace: true).Task;
-        AssetManager.AddHandle(bullet);
-        PoolingHandle.bullet = bullet.GetComponent<Bullet>();
+        await LoadGameObject(playerLabel);
+        EventCallback.OnUpdate();
+        //var player = await Addressables.InstantiateAsync("Player", instantiateInWorldSpace: true).Task;
+        //AssetManager.AddHandle("Player", player, player);
+        //EventCallback.OnGameStart(player.transform);
+    }
 
-        var boss = await this.boss.InstantiateAsync(instantiateInWorldSpace: true).Task;
-        AssetManager.AddHandle(boss);
-        GameController.Instance.boss = boss.GetComponent<Boss>();
+    private async System.Threading.Tasks.Task LoadGameObject(AssetLabelReference label)
+    {
+        var handle = Addressables.LoadResourceLocationsAsync(label);
+        await handle.Task;
+        foreach (var item in handle.Result)
+        {
+            var asset = await Addressables.InstantiateAsync(item, instantiateInWorldSpace: true).Task;
+            Debug.Log("Spawn");
+            AssetManager.AddHandle(label.labelString, asset, asset);
+        }
+        Addressables.Release(handle);
+    }
 
-        var player = await this.player.InstantiateAsync(instantiateInWorldSpace: true).Task;
-        AssetManager.AddHandle(player);
-        EventCallback.OnGameStart(player.transform);
+    private async System.Threading.Tasks.Task Load<T>(AssetLabelReference label) where T : Object
+    {
+        var obj = Addressables.LoadAssetAsync<T>(label);
+        await obj.Task;
+        AssetManager.AddHandle(label.labelString, obj.Result, obj);
     }
 
     private async System.Threading.Tasks.Task<bool> AnyUpdate()
@@ -86,22 +100,16 @@ public class AssetLoader : MonoBehaviour
         if (catalogs.Count > 0)
             await Addressables.UpdateCatalogs(catalogs).Task;
 
-        allRefs.Clear();
-        allRefs.Add(player);
-        allRefs.Add(boss);
-        allRefs.Add(bullet);
-        allRefs.AddRange(level);
-        //allRefs.Add(combatClip.assetReference);
-        //Debug.Log(allRefs.Count);
-
-        var size = await Addressables.GetDownloadSizeAsync(allRefs).Task;
+        var locations = await Addressables.LoadResourceLocationsAsync(mainLabel).Task;
+        var size = await Addressables.GetDownloadSizeAsync(locations).Task;
+        Addressables.Release(locations);
         if (size > 0) return true;
         return false;
     }
 
     private async System.Threading.Tasks.Task UpdateContent()
     {
-        var downloadUpdate = Addressables.DownloadDependenciesAsync(allRefs, Addressables.MergeMode.Union, true);
+        var downloadUpdate = Addressables.DownloadDependenciesAsync(mainLabel);
 
         while (downloadUpdate.IsDone == false)
         {
@@ -112,11 +120,4 @@ public class AssetLoader : MonoBehaviour
 
         EventCallback.OnDemandUpdate(false);
     }
-}
-
-[System.Serializable]
-public class AssetRef<T> where T : Object
-{
-    public AssetReferenceT<T> assetReference;
-    public T Value { get; set; }
 }

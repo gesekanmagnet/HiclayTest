@@ -8,7 +8,7 @@ public class PlayerCombat : Combat
         {
             Bullet bullet = PoolingHandle.bulletPooling.GetItem();
             bullet.Initialize(bulletColor, transform.position, direction == Vector2.zero ? Vector2.right : direction, bulletLayer, damage: 1, speed: bulletSpeed);
-            AudioEmitter.PlayOneShot(AssetLoader.Instance.CombatClip.Value);
+            AudioEmitter.PlayOneShot(AssetManager.Get<AudioClip>("ShootClip"));
 
             timeInterval = Time.time + 1f / fireRate;
         }

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 2ba32de9281f1a04db5ab707a98bd743
   m_currentHash:
     serializedVersion: 2
-    Hash: 46dc2acef74de06e735222d3d8f02220
+    Hash: 0e5b1cde2b0057b079e8aa824254c81e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_CatalogRequestsTimeout: 0
@@ -101,6 +101,13 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Gameplay
+    - ShootClip
+    - HatSprite
+    - PlayerSprite
+    - Player
+    - Bullet
+    - Boss
+    - level
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 8c5ecd436d64ad641a1fc8e5d097753f, type: 2}

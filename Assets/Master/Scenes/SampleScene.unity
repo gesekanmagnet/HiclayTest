@@ -7867,11 +7867,27 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   combatClip:
     assetReference:
-      m_AssetGUID: 41c21726ac8fdaa4cad61973a4067028
+      m_AssetGUID: dfc388ba5631e7f4ca6cb5963dddc97e
       m_SubObjectName: 
       m_SubObjectType: 
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+  mainLabel:
+    m_LabelString: Gameplay
+  bulletLabel:
+    m_LabelString: Bullet
+  playerLabel:
+    m_LabelString: Player
+  shootClipLabel:
+    m_LabelString: ShootClip
+  levelLabel:
+    m_LabelString: level
+  bossLabel:
+    m_LabelString: Boss
+  hatLabel:
+    m_LabelString: HatSprite
+  playerSpriteLabel:
+    m_LabelString: PlayerSprite
 --- !u!1 &1553153380
 GameObject:
   m_ObjectHideFlags: 0

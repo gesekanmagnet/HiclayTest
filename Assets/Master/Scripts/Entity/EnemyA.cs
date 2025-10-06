@@ -6,7 +6,7 @@ public class EnemyA : MonoBehaviour
     [SerializeField] private float shootInterval = 5f;
     [SerializeField] private LayerMask target;
     [SerializeField] private AudioClip destroyClip;
-    [SerializeField] private SpriteRenderer hitRenderer;
+    [SerializeField] private SpriteRenderer hitRenderer, haloSprite;
 
     private Combat combat;
     private Health health;
@@ -18,6 +18,7 @@ public class EnemyA : MonoBehaviour
     {
         combat = GetComponent<Combat>();
         health = GetComponent<Health>();
+        haloSprite.sprite = AssetManager.Get<Sprite>("HatSprite");
     }
 
     private void Start()

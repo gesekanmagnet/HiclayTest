@@ -7,9 +7,38 @@ public static class AssetManager
 {
     private static List<GameObject> instances = new();
     private static List<AsyncOperationHandle> handles = new();
+    private static Dictionary<string, Object> assets = new();
 
-    public static void AddHandle(GameObject go) => instances.Add(go);
-    public static void AddHandle(AsyncOperationHandle handle) => handles.Add(handle);
+    private static void Register(string key, Object value)
+    {
+        if(!assets.ContainsKey(key))
+        {
+            assets.Add(key, value);
+        }
+        else
+            assets[key] = value;
+    }
+
+    public static void AddHandle(string key, Object value, GameObject go)
+    {
+        instances.Add(go);
+        Register(key, value);
+    }
+
+    public static void AddHandle(string key, Object value, AsyncOperationHandle handle)
+    {
+        handles.Add(handle);
+        Register(key, value);
+    }
+
+    public static T Get<T>(string key) where T : Object
+    {
+        if(assets.TryGetValue(key, out var t) && t is T type)
+        {
+            return type;
+        }
+        return null;
+    }
 
     public static void ReleaseAll()
     {
